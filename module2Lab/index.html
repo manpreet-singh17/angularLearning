@@ -8,7 +8,7 @@
 
 <body ng-controller="menuController">
     <div class="container">
-        <h1>MP's Pizza</h1>
+        <h1>MP's Pizza Store</h1>
         <hr>
         <!-- :: this char is used to just one time bind to controller. -->
         <h2>{{::model.title}}</h2>
@@ -32,7 +32,17 @@
         <div>
             <h3>Selected item</h3>
             <pre>{{model.mainDish}} <span style="color: red;">{{Note}}</span></pre>
+        </div>
+        <!-- special instructions by the user. -->
+        <div>
+            <h3>Special Instructions</h3>
+            <textarea cols="15" rows="4" class="form-control" ng-model="model.specialInstructions"></textarea>
+        </div>
 
+        <!-- order summary -->
+        <div>
+            <h3>Order summary.</h3>
+            <pre>{{model.mainDish}} -- {{model.specialInstructions}}</pre>
         </div>
 
     </div>
