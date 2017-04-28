@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="helloWorldApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body ng-controller="firstController">
+
+    <h1>{{"Hello from angularjs"}}</h1>
+    <h2>{{appName}}</h2>
+    <h3>{{peeta}}</h3>
+    <pre>{{customDependency}}</pre>
+
+
+    <!-- angular js library. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+    <!-- Angular code -->
+    <script type="text/javascript">
+        //creating a module named helloWorldApp. app and module are interchangeable.
+        var helloWorldApp = angular.module('helloWorldApp', []);
+
+        //adding contant object to helloWorldApp. custom dependency for firstController.
+        helloWorldApp.constant('myConfig', {
+            applicationName: 'My Angular JS app.'
+        });
+
+        //this code tell angular --add a controller named firstController to helloWorldApp module.
+        //empty [] tell angular about dependencies of firstController.
+        helloWorldApp.controller('firstController', [
+            '$scope', //firstController depends on $scope.
+            'myConfig', //injecting myCofig dependency to myFirstController.
+            function($scope, myCofig) {
+                //defining use of $scope. $scope is a object to inject data to view.
+                $scope.appName = "Any app name from angular.";
+                $scope.peeta = "My name is peeta";
+                $scope.customDependency = myCofig.applicationName;
+            }
+        ]);
+    </script>
+</body>
+
+</html>
