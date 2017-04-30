@@ -2,47 +2,49 @@
 <html ng-app="app">
 
 <head>
-    <title>Tony's Pizza</title>
+    <title>MP's Pizza</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 
 <body ng-controller="menuController">
+
     <div class="container">
-        <h1>MP's Pizza Store</h1>
-        <hr>
+        <h1 class="text-center">MP's Pizza Store</h1>
+
         <!-- :: this char is used to just one time bind to controller. -->
         <h2>{{::model.title}}</h2>
         <hr>
 
         <div>
-            <label><input type="radio" name="category" ng-click="changeMainDish('Cheese Pizza')" />Cheese Pizza</label>
+            <label><input type="radio" name="category" ng-click="changeMainDish('Cheese Pizza', '$4.50')" />Cheese Pizza</label>
         </div>
         <div>
-            <label><input type="radio" name="category" ng-click="changeMainDish('Onion Pizza')" />Onion Pizza</label>
+            <label><input type="radio" name="category" ng-click="changeMainDish('Onion Pizza', '$3.50')" />Onion Pizza</label>
         </div>
         <div>
-            <label><input type="radio" name="category" ng-click="changeMainDish('Veggy Lover Pizza')" />Veggy Lover Pizza</label>
+            <label><input type="radio" name="category" ng-click="changeMainDish('Veggy Lover Pizza', '$5.50')" />Veggy Lover Pizza</label>
         </div>
         <div>
-            <label><input type="radio" name="category" ng-click="changeMainDish('BBQ Pizza')" />BBQ Pizza</label>
-
+            <label><input type="radio" name="category" ng-click="changeMainDish('BBQ Pizza', '$6.50')" />BBQ Pizza</label>
         </div>
+        <hr>
 
         <!-- display selected menu item. -->
         <div>
             <h3>Selected item</h3>
-            <pre>{{model.mainDish}} <span style="color: red;">{{Note}}</span></pre>
+            <pre>{{model.mainDish.name}} <span style="color: red;">{{Note}}</span></pre>
         </div>
+
         <!-- special instructions by the user. -->
         <div>
             <h3>Special Instructions</h3>
             <textarea cols="15" rows="4" class="form-control" ng-model="model.specialInstructions"></textarea>
         </div>
-
+        <hr>
         <!-- order summary -->
         <div>
             <h3>Order summary.</h3>
-            <pre>{{model.mainDish}} -- {{model.specialInstructions}}</pre>
+            <pre>{{model.mainDish.name}}  {{model.mainDish.price}} - {{model.specialInstructions}}</pre>
         </div>
 
     </div>
