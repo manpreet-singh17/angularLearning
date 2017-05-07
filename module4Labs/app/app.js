@@ -1,1 +1,4 @@
-var app = angular.module('app', []);
+var app = angular.module('app', [
+    'ngResource',
+    'gitHubService'
+]);
